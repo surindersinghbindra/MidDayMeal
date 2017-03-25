@@ -14,7 +14,7 @@
         <item>Fund received</item>
         <item>Wheate received</item>
         <item>Rice received</item>
-        <item>Select Day</item>
+
     </string-array>
 
     <string-array name="steps_subtitles">
@@ -22,7 +22,7 @@
         <item>Any Cash Received</item>
         <item>Wheate received (in Kgs)</item>
         <item>Rice received (in Kgs)</item>
-        <item>Select meal day</item>
+
     </string-array>
 
     <string-array name="week_days">

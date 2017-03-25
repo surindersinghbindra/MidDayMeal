@@ -30,10 +30,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
+import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.mdm.databinding.ActivitySplashBinding;
 
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity  extends AppCompatActivity {
 
     private final Handler waitHandler = new Handler();
     private final Runnable waitCallback = new Runnable() {

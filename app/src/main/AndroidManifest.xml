@@ -44,7 +44,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainIntoActivity"></activity>
+        <activity android:name=".MainIntoActivity"
+            android:windowSoftInputMode="stateAlwaysHidden">
+
+        </activity>
         <activity android:name=".MainActivity"></activity>
     </application>
 

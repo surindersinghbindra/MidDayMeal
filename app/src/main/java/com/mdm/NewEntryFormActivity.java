@@ -43,7 +43,7 @@ public class NewEntryFormActivity extends AppCompatActivity implements VerticalS
     private static final int FUND_RECEIVED_STEP_NUM = 1;
     private static final int WHEATE_RECEIVED_STEP_NUM = 2;
     private static final int RICE_RECEIVED_STEP_NUM = 3;
-    private static final int DAY_SELECT_STEP_NUM = 4;
+   // private static final int DAY_SELECT_STEP_NUM = 4;
 
 
     // Title step
@@ -139,9 +139,6 @@ public class NewEntryFormActivity extends AppCompatActivity implements VerticalS
             case RICE_RECEIVED_STEP_NUM:
                 view = createRiceReceivedStep();
                 break;
-            case DAY_SELECT_STEP_NUM:
-                view = createDaySelectStep();
-                break;
         }
         return view;
     }
@@ -166,10 +163,10 @@ public class NewEntryFormActivity extends AppCompatActivity implements VerticalS
                 // In this case, the instruction above is equivalent to:
                 // verticalStepperForm.setActiveStepAsCompleted();
                 break;
-            case DAY_SELECT_STEP_NUM:
+          //  case DAY_SELECT_STEP_NUM:
                 // When this step is open, we check the days to verify that at least one is selected
-                checkDays();
-                break;
+          //      checkDays();
+          //      break;
 
         }
     }
@@ -503,8 +500,8 @@ public class NewEntryFormActivity extends AppCompatActivity implements VerticalS
 
     private void activateDay(int index, LinearLayout dayLayout, boolean check) {
         weekDays[index] = true;
-
-        dayLayout.setTag(true);
+//
+     //   dayLayout.setTag(true);
 
         Drawable bg = ContextCompat.getDrawable(getBaseContext(),
                 R.drawable.circle_step_done);
@@ -540,12 +537,12 @@ public class NewEntryFormActivity extends AppCompatActivity implements VerticalS
         boolean thereIsAtLeastOneDaySelected = false;
         for (int i = 0; i < weekDays.length && !thereIsAtLeastOneDaySelected; i++) {
             if (weekDays[i]) {
-                verticalStepperForm.setStepAsCompleted(DAY_SELECT_STEP_NUM);
+           //     verticalStepperForm.setStepAsCompleted(DAY_SELECT_STEP_NUM);
                 thereIsAtLeastOneDaySelected = true;
             }
         }
         if (!thereIsAtLeastOneDaySelected) {
-            verticalStepperForm.setStepAsUncompleted(DAY_SELECT_STEP_NUM, null);
+         //   verticalStepperForm.setStepAsUncompleted(DAY_SELECT_STEP_NUM, null);
         }
 
         return thereIsAtLeastOneDaySelected;
