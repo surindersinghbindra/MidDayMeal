@@ -2,17 +2,16 @@ package com.mdm;
 
 import android.net.Uri;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.app.OnNavigationBlockedListener;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
-import com.heinrichreimersoftware.materialintro.slide.SimpleSlide;
 import com.heinrichreimersoftware.materialintro.slide.Slide;
+import com.mdm.verticalstepperform.PrevBalanceFragment;
 
-public class MainIntoActivity extends IntroActivity implements CashReceived.OnFragmentInteractionListener{
+public class MainIntoActivity extends IntroActivity implements CashReceived.OnFragmentInteractionListener ,WheatReceivedFragment.OnFragmentInteractionListener,PrevBalanceFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,31 +25,29 @@ public class MainIntoActivity extends IntroActivity implements CashReceived.OnFr
         setButtonCtaTintMode(BUTTON_CTA_TINT_MODE_TEXT);
 
 
-     //   setContentView(R.layout.activity_main_into);
+        //   setContentView(R.layout.activity_main_into);
 
-        addSlide(new SimpleSlide.Builder()
-                .title("Xfghfghgfhf")
-                .description("suiderrrr")
-                .image(R.drawable.add)
-                .background(R.color.mi_status_bar_background)
-                .backgroundDark(R.color.mi_text_color_primary_dark)
-                .scrollable(true)
-                .build());
+        Slide wheateRecieved = new FragmentSlide.Builder()
+                .background(R.color.wheate)
+                .backgroundDark(R.color.wheateDark)
+                .fragment(CashReceived.newInstance("", ""))
+                .build();
+        addSlide(wheateRecieved);
 
 
-       final Slide loginSlide;
+        final Slide loginSlide;
 
         loginSlide = new FragmentSlide.Builder()
                 .background(R.color.colorAccent)
                 .backgroundDark(R.color.colorPrimaryDark)
-                .fragment(CashReceived.newInstance("", ""))
+                .fragment(PrevBalanceFragment.newInstance("", ""))
                 .build();
         addSlide(loginSlide);
 
         Slide loginSlid2e = new FragmentSlide.Builder()
                 .background(R.color.colorAccent)
                 .backgroundDark(R.color.colorPrimaryDark)
-                .fragment(CashReceived.newInstance("", ""))
+                .fragment(WheatReceivedFragment.newInstance("", ""))
                 .build();
         addSlide(loginSlid2e);
 
@@ -71,6 +68,6 @@ public class MainIntoActivity extends IntroActivity implements CashReceived.OnFr
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-        
+
     }
 }

@@ -35,7 +35,7 @@ dependencies {
     compile "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
 
 
-
+    compile 'com.github.florent37:materialtextfield:1.0.7'
     compile 'com.android.support:design:25.3.0'
     compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.heinrichreimersoftware:material-intro:1.6'
