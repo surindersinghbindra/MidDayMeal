@@ -1,5 +1,6 @@
 package com.mdm;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.design.widget.Snackbar;
 import android.os.Bundle;
@@ -10,7 +11,7 @@ import com.heinrichreimersoftware.materialintro.app.OnNavigationBlockedListener;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
 import com.heinrichreimersoftware.materialintro.slide.Slide;
 
-public class MainIntoActivity extends IntroActivity implements StockAndCashReceivedFragment.OnFragmentInteractionListener ,WheatReceivedFragment.OnFragmentInteractionListener,PrevBalanceFragment.OnFragmentInteractionListener{
+public class MainIntoActivity extends IntroActivity implements StockAndCashReceivedFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +28,14 @@ public class MainIntoActivity extends IntroActivity implements StockAndCashRecei
         //   setContentView(R.layout.activity_main_into);
 
         final Slide wheateRecieved = new FragmentSlide.Builder()
-                .background(R.color.wheate)
-                .backgroundDark(R.color.wheateDark)
-                .fragment(StockAndCashReceivedFragment.newInstance("", ""))
+                .background(R.color.colorPrimary)
+                .backgroundDark(R.color.colorPrimaryDark)
+                .fragment(StockAndCashReceivedFragment.newInstance("", "")).buttonCtaClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(MainIntoActivity.this,NewEntryFormActivity.class));
+                    }
+                })
                 .build();
         addSlide(wheateRecieved);
 

@@ -23,6 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Wheat in stock"
+                android:inputType="numberDecimal"
                 android:textColor="#333"
                 android:textColorHint="#666"
                 android:textSize="15sp" />
@@ -38,6 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Balance"
+                android:inputType="numberDecimal"
                 android:textColor="#333"
                 android:textColorHint="#666"
                 android:textSize="15sp" />
@@ -53,6 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Rice in Stock"
+                android:inputType="numberDecimal"
                 android:textColor="#333"
                 android:textColorHint="#666"
                 android:textSize="15sp" />
