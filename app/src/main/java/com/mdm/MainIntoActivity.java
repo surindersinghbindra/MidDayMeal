@@ -12,7 +12,7 @@ import com.heinrichreimersoftware.materialintro.app.OnNavigationBlockedListener;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
 import com.heinrichreimersoftware.materialintro.slide.Slide;
 
-public class MainIntoActivity extends AppCompatActivity implements StockAndCashReceivedFragment.OnFragmentInteractionListener {
+public class MainIntoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +22,9 @@ public class MainIntoActivity extends AppCompatActivity implements StockAndCashR
 
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 
     public void homeActicty(View view) {
 
-        startActivity(new Intent(MainIntoActivity.this,MainActivity.class));
+        startActivity(new Intent(MainIntoActivity.this, MainActivity.class));
     }
 }
