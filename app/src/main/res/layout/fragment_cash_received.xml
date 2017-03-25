@@ -1,10 +1,10 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.mdm.CashReceived">
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mdm.StockAndCashReceivedFragment">
 
 
     <LinearLayout
@@ -13,27 +13,51 @@
         android:layout_gravity="center"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:background="@null">
+            app:mtf_image="@drawable/wheat">
 
-            <com.github.florent37.materialtextfield.MaterialTextField
-                android:layout_width="300dp"
+            <EditText
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:mtf_image="@drawable/wheat"
-                >
+                android:hint="Wheat in stock"
+                android:textColor="#333"
+                android:textColorHint="#666"
+                android:textSize="15sp" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Password"
-                    android:textColor="#333"
-                    android:textColorHint="#666"
-                    android:textSize="15sp" />
+        </com.github.florent37.materialtextfield.MaterialTextField>
 
-            </com.github.florent37.materialtextfield.MaterialTextField>
-        </LinearLayout>
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            app:mtf_image="@drawable/rupee">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Balance"
+                android:textColor="#333"
+                android:textColorHint="#666"
+                android:textSize="15sp" />
+
+        </com.github.florent37.materialtextfield.MaterialTextField>
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            app:mtf_image="@drawable/ic_rice">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Rice in Stock"
+                android:textColor="#333"
+                android:textColorHint="#666"
+                android:textSize="15sp" />
+
+        </com.github.florent37.materialtextfield.MaterialTextField>
     </LinearLayout>
 
 

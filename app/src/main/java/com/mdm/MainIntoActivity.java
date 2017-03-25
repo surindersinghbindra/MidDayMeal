@@ -9,9 +9,8 @@ import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.app.OnNavigationBlockedListener;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
 import com.heinrichreimersoftware.materialintro.slide.Slide;
-import com.mdm.verticalstepperform.PrevBalanceFragment;
 
-public class MainIntoActivity extends IntroActivity implements CashReceived.OnFragmentInteractionListener ,WheatReceivedFragment.OnFragmentInteractionListener,PrevBalanceFragment.OnFragmentInteractionListener{
+public class MainIntoActivity extends IntroActivity implements StockAndCashReceivedFragment.OnFragmentInteractionListener ,WheatReceivedFragment.OnFragmentInteractionListener,PrevBalanceFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,29 +26,15 @@ public class MainIntoActivity extends IntroActivity implements CashReceived.OnFr
 
         //   setContentView(R.layout.activity_main_into);
 
-        Slide wheateRecieved = new FragmentSlide.Builder()
+        final Slide wheateRecieved = new FragmentSlide.Builder()
                 .background(R.color.wheate)
                 .backgroundDark(R.color.wheateDark)
-                .fragment(CashReceived.newInstance("", ""))
+                .fragment(StockAndCashReceivedFragment.newInstance("", ""))
                 .build();
         addSlide(wheateRecieved);
 
 
-        final Slide loginSlide;
 
-        loginSlide = new FragmentSlide.Builder()
-                .background(R.color.colorAccent)
-                .backgroundDark(R.color.colorPrimaryDark)
-                .fragment(PrevBalanceFragment.newInstance("", ""))
-                .build();
-        addSlide(loginSlide);
-
-        Slide loginSlid2e = new FragmentSlide.Builder()
-                .background(R.color.colorAccent)
-                .backgroundDark(R.color.colorPrimaryDark)
-                .fragment(WheatReceivedFragment.newInstance("", ""))
-                .build();
-        addSlide(loginSlid2e);
 
         addOnNavigationBlockedListener(new OnNavigationBlockedListener() {
             @Override
@@ -58,7 +43,7 @@ public class MainIntoActivity extends IntroActivity implements CashReceived.OnFr
                 if (contentView != null) {
                     Slide slide = getSlide(position);
 
-                    if (slide == loginSlide) {
+                    if (slide == wheateRecieved) {
                         Snackbar.make(contentView, "thtrhthtyh", Snackbar.LENGTH_LONG).show();
                     }
                 }

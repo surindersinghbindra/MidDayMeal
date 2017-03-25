@@ -11,13 +11,13 @@
             android:orientation="horizontal" android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <include layout="@layout/step_days_of_week_day_layout" android:id="@+id/day_0" />
-            <include layout="@layout/step_days_of_week_day_layout" android:id="@+id/day_1" />
-            <include layout="@layout/step_days_of_week_day_layout" android:id="@+id/day_2" />
-            <include layout="@layout/step_days_of_week_day_layout" android:id="@+id/day_3" />
-            <include layout="@layout/step_days_of_week_day_layout" android:id="@+id/day_4" />
-            <include layout="@layout/step_days_of_week_day_layout" android:id="@+id/day_5" />
-            <include layout="@layout/step_days_of_week_day_layout" android:id="@+id/day_6" />
+            <include layout="@layout/step_days_of_week_day_layout" />
+            <include layout="@layout/step_days_of_week_day_layout" />
+            <include layout="@layout/step_days_of_week_day_layout" />
+            <include layout="@layout/step_days_of_week_day_layout" />
+            <include layout="@layout/step_days_of_week_day_layout" />
+            <include layout="@layout/step_days_of_week_day_layout" />
+            <include layout="@layout/step_days_of_week_day_layout" />
 
         </LinearLayout>
 
