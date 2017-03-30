@@ -1,5 +1,11 @@
 apply plugin: 'com.android.application'
 
+
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -44,5 +50,11 @@ dependencies {
     compile 'com.facebook.stetho:stetho:1.4.2'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:support-v4:25.3.0'
+
+    compile 'com.github.sundeepk:compact-calendar-view:2.0.1'
+    compile 'uk.co.chrisjenx:calligraphy:2.2.0'
+    compile('com.digits.sdk.android:digits:2.0.6@aar') {
+        transitive = true;
+    }
     testCompile 'junit:junit:4.12'
 }

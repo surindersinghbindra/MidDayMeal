@@ -15,7 +15,7 @@ public class AppDatabase {
 
     public static final String NAME = "AppDatabase"; // we will add the .db extension
 
-    public static final int VERSION = 3;
+    public static final int VERSION = 5;
 
     @Migration(version = 3, priority = 5, database = AppDatabase.class)
     public static class Migration1 extends AlterTableMigration<RawData> {
@@ -41,6 +41,23 @@ public class AppDatabase {
             addColumn(SQLiteType.REAL, "recievedBalanceRice");
             addColumn(SQLiteType.REAL, "cousumeTodayRice");
             addColumn(SQLiteType.REAL, "finalBalanceRice");
+
+        }
+    }
+
+    @Migration(version = 4, priority = 5, database = AppDatabase.class)
+    public static class Migration4 extends AlterTableMigration<RawData> {
+
+        public Migration4(Class<RawData> table) {
+            super(table);
+        }
+
+        @Override
+        public void onPreMigrate() {
+
+            addColumn(SQLiteType.INTEGER, "day");
+            addColumn(SQLiteType.INTEGER, "month");
+            addColumn(SQLiteType.INTEGER, "year");
 
         }
     }

@@ -10,22 +10,22 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:background="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
+        android:background="@color/colorPrimary"
         android:padding="10dp"
-        android:src="@drawable/add" />
+        android:src="@drawable/ic_add" />
 
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabWhatsApp"
-        android:background="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
         android:layout_margin="@dimen/fab_margin"
+        android:background="@color/colorPrimary"
         android:src="@drawable/whatsapp_logo" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -24,17 +24,22 @@
 
 package com.mdm;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.mdm.databinding.ActivitySplashBinding;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class SplashActivity  extends AppCompatActivity {
+
+public class SplashActivity extends AppCompatActivity {
 
     private final Handler waitHandler = new Handler();
     private final Runnable waitCallback = new Runnable() {
@@ -51,10 +56,21 @@ public class SplashActivity  extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // remove title
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
+
+
 
         //Fake wait 2s to simulate some initialization on cold start (never do this in production!)
         waitHandler.postDelayed(waitCallback, 2000);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     @Override

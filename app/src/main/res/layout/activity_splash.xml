@@ -5,26 +5,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="@dimen/mi_baseline"
         android:background="?colorPrimary"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/mi_baseline"
         tools:context="com.heinrichreimersoftware.materialintro.demo.SplashActivity">
 
         <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@drawable/ic_next"
-            android:contentDescription="@string/app_name" />
+            android:layout_width="300dp"
+            android:layout_height="320dp"
+            android:contentDescription="@string/mid_day_meal_punjab"
+            android:src="@drawable/mdm_image" />
 
         <TextView
+            fontPath="fonts/Roboto-Light.ttf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/mi_baseline"
-            android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:text="@string/mid_day_meal_punjab"
+            android:textSize="20sp"
             android:textColor="?android:textColorPrimaryInverse"
-            android:fontFamily="sans-serif-medium"
             tools:ignore="UnusedAttribute" />
 
     </LinearLayout>

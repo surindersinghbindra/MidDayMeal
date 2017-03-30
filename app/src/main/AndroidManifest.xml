@@ -9,13 +9,20 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity">
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="d982a4f1e3f5bf7586e47ab7b9b2a310f412b431"
+            />
+
         <activity
             android:name=".NewAlarmFormActivity"
             android:label="@string/add_alarm"
@@ -44,7 +51,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainIntoActivity"
+        <activity
+            android:name=".MainIntoActivity"
             android:windowSoftInputMode="stateAlwaysHidden">
 
         </activity>

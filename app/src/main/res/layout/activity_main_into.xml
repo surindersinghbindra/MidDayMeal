@@ -1,79 +1,86 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+<layout>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
 
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical">
-
-        <com.github.florent37.materialtextfield.MaterialTextField
-            android:layout_width="300dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            app:mtf_image="@drawable/rupee">
+            android:layout_gravity="center"
+            android:orientation="vertical">
 
-            <EditText
+            <com.github.florent37.materialtextfield.MaterialTextField
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                app:mtf_image="@drawable/rupee">
+
+                <EditText
+                    android:id="@+id/etOpeningBalance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Balance"
+                    android:inputType="numberDecimal"
+                    android:textColor="#333"
+                    android:textColorHint="#666"
+                    android:textSize="15sp" />
+
+            </com.github.florent37.materialtextfield.MaterialTextField>
+
+            <com.github.florent37.materialtextfield.MaterialTextField
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                app:mtf_image="@drawable/wheat">
+
+                <EditText
+                    android:id="@+id/etOpeningWheat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Wheat in stock (in Kgs)"
+                    android:inputType="numberDecimal"
+                    android:textColor="#333"
+                    android:textColorHint="#666"
+                    android:textSize="15sp" />
+
+            </com.github.florent37.materialtextfield.MaterialTextField>
+
+
+            <com.github.florent37.materialtextfield.MaterialTextField
+                android:layout_width="300dp"
+
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                app:mtf_image="@drawable/ic_rice">
+
+                <EditText
+                    android:id="@+id/etOpeningRice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Rice in Stock (in Kgs)"
+                    android:inputType="numberDecimal"
+                    android:textColor="#333"
+                    android:textColorHint="#666"
+                    android:textSize="15sp" />
+
+            </com.github.florent37.materialtextfield.MaterialTextField>
+
+
+            <Button
+                android:id="@+id/btGetStarted"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Balance"
-                android:inputType="numberDecimal"
-                android:textColor="#333"
-                android:textColorHint="#666"
-                android:textSize="15sp" />
-
-        </com.github.florent37.materialtextfield.MaterialTextField>
-
-        <com.github.florent37.materialtextfield.MaterialTextField
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            app:mtf_image="@drawable/wheat">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Wheat in stock"
-                android:inputType="numberDecimal"
-                android:textColor="#333"
-                android:textColorHint="#666"
-                android:textSize="15sp" />
-
-        </com.github.florent37.materialtextfield.MaterialTextField>
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:onClick="homeActicty"
+                android:text="Get Started"
+                android:textColor="@color/colorPrimary" />
+        </LinearLayout>
 
 
-        <com.github.florent37.materialtextfield.MaterialTextField
-            android:layout_width="300dp"
-
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            app:mtf_image="@drawable/ic_rice">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Rice in Stock"
-                android:inputType="numberDecimal"
-                android:textColor="#333"
-                android:textColorHint="#666"
-                android:textSize="15sp" />
-
-        </com.github.florent37.materialtextfield.MaterialTextField>
-
-
-        <Button
-            android:textColor="@color/colorPrimary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:onClick="homeActicty"
-            android:text="Get Started" />
-    </LinearLayout>
-
-
-</FrameLayout>
+    </FrameLayout>
+</layout>

@@ -50,6 +50,187 @@ public class RawData extends BaseObservable {
         notifyPropertyChanged(BR.strength);
     }
 
+
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    @Column
+    int day;
+    @Column
+    int month;
+    @Column
+    int year;
+
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setOpeningBalanceMoney(int openingBalanceMoney) {
+        this.openingBalanceMoney = openingBalanceMoney;
+    }
+
+    public void setRecievedBalanceMoney(int recievedBalanceMoney) {
+        this.recievedBalanceMoney = recievedBalanceMoney;
+    }
+
+    public void setTodayExpensesMoney(int todayExpensesMoney) {
+        this.todayExpensesMoney = todayExpensesMoney;
+    }
+
+    public void setFinalTodayBalanceMoney(int finalTodayBalanceMoney) {
+        this.finalTodayBalanceMoney = finalTodayBalanceMoney;
+    }
+
+    public void setOpeningBalanceWheat(double openingBalanceWheat) {
+        this.openingBalanceWheat = openingBalanceWheat;
+    }
+
+    public void setRecievedBalanceWheat(double recievedBalanceWheat) {
+        this.recievedBalanceWheat = recievedBalanceWheat;
+    }
+
+    public void setConsumeTodayBalanceWheat(double consumeTodayBalanceWheat) {
+        this.consumeTodayBalanceWheat = consumeTodayBalanceWheat;
+    }
+
+    public void setFinalTodayBalanceWheat(double finalTodayBalanceWheat) {
+        this.finalTodayBalanceWheat = finalTodayBalanceWheat;
+    }
+
+    public void setOpeningBalanceRice(double openingBalanceRice) {
+        this.openingBalanceRice = openingBalanceRice;
+    }
+
+    public void setRecievedBalanceRice(double recievedBalanceRice) {
+        this.recievedBalanceRice = recievedBalanceRice;
+    }
+
+    public void setCousumeTodayRice(double cousumeTodayRice) {
+        this.cousumeTodayRice = cousumeTodayRice;
+    }
+
+    public void setFinalBalanceRice(double finalBalanceRice) {
+        this.finalBalanceRice = finalBalanceRice;
+    }
+
+    public void setDallChana(double dallChana) {
+        this.dallChana = dallChana;
+    }
+
+    public void setSabutMungi(double sabutMungi) {
+        this.sabutMungi = sabutMungi;
+    }
+
+    public void setRefinedOil(double refinedOil) {
+        this.refinedOil = refinedOil;
+    }
+
+    public void setMirch(double mirch) {
+        this.mirch = mirch;
+    }
+
+    public void setJeera(double jeera) {
+        this.jeera = jeera;
+    }
+
+    public void setHaldi(double haldi) {
+        this.haldi = haldi;
+    }
+
+    public void setGaramMasala(double garamMasala) {
+        this.garamMasala = garamMasala;
+    }
+
+    public void setNamak(double namak) {
+        this.namak = namak;
+    }
+
+    public void setKhoppa(double khoppa) {
+        this.khoppa = khoppa;
+    }
+
+    public void setDakha(double dakha) {
+        this.dakha = dakha;
+    }
+
+    public void setKaalCholle(double kaalCholle) {
+        this.kaalCholle = kaalCholle;
+    }
+
+    public void setBessan(double bessan) {
+        this.bessan = bessan;
+    }
+
+    public void setDahi(double dahi) {
+        this.dahi = dahi;
+    }
+
+    public void setPyaaz(double pyaaz) {
+        this.pyaaz = pyaaz;
+    }
+
+    public void setKhandd(double khandd) {
+        this.khandd = khandd;
+    }
+
+    public void setTamattar(double tamattar) {
+        this.tamattar = tamattar;
+    }
+
+    public void setSabzi(double sabzi) {
+        this.sabzi = sabzi;
+    }
+
+    public void setAloo(double aloo) {
+        this.aloo = aloo;
+    }
+
+    public void setMausamiSabzi(double mausamiSabzi) {
+        this.mausamiSabzi = mausamiSabzi;
+    }
+
+    public void setKanakPissai(double kanakPissai) {
+        this.kanakPissai = kanakPissai;
+    }
+
+    public void setDudh(double dudh) {
+        this.dudh = dudh;
+    }
+
+    public void setTotalCondiment(double totalCondiment) {
+        this.totalCondiment = totalCondiment;
+    }
+
+    public void setBallan(double ballan) {
+        this.ballan = ballan;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
     //Money
     @Column
     int openingBalanceMoney;
