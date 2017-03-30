@@ -14,6 +14,35 @@
             android:layout_gravity="center"
             android:orientation="vertical">
 
+
+            <com.github.florent37.materialtextfield.MaterialTextField
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                app:mtf_image="@drawable/rupee">
+
+                <EditText
+                    android:id="@+id/etPhoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Balance"
+                    android:inputType="numberDecimal"
+                    android:textColor="#333"
+                    android:textColorHint="#666"
+                    android:textSize="15sp" />
+
+            </com.github.florent37.materialtextfield.MaterialTextField>
+
+            <com.digits.sdk.android.DigitsAuthButton
+                android:text="use me"
+                fontPath="fonts/Roboto-Light.ttf"
+                android:background="@android:color/white"
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/auth_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
             <com.github.florent37.materialtextfield.MaterialTextField
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
