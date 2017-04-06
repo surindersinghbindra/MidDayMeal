@@ -34,13 +34,13 @@
             </com.github.florent37.materialtextfield.MaterialTextField>
 
             <com.digits.sdk.android.DigitsAuthButton
-                android:text="use me"
-                fontPath="fonts/Roboto-Light.ttf"
-                android:background="@android:color/white"
-                android:textColor="@color/colorPrimary"
                 android:id="@+id/auth_button"
+                fontPath="fonts/Roboto-Light.ttf"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:text="use me"
+                android:textColor="@color/colorPrimary" />
 
 
             <com.github.florent37.materialtextfield.MaterialTextField
@@ -60,6 +60,26 @@
                     android:textSize="15sp" />
 
             </com.github.florent37.materialtextfield.MaterialTextField>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Minus (-)"
+                    android:textColor="@color/tw__solid_white" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Plus (+)"
+                    android:textColor="@color/tw__solid_white" />
+            </RadioGroup>
 
             <com.github.florent37.materialtextfield.MaterialTextField
                 android:layout_width="300dp"
