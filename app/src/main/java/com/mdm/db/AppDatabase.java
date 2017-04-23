@@ -16,7 +16,7 @@ public class AppDatabase {
 
     public static final String NAME = "AppDatabase"; // we will add the .db extension
 
-    public static final int VERSION = 7;
+    public static final int VERSION = 11;
 
     @Migration(version = 3, priority = 5, database = AppDatabase.class)
     public static class Migration1 extends AlterTableMigration<RawData> {

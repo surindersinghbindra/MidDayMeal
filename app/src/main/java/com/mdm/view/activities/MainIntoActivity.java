@@ -51,11 +51,10 @@ public class MainIntoActivity extends AppCompatActivity {
         Fabric.with(this, new TwitterCore(authConfig),  digitsBuilder.build());
 
 
-        //  Fabric.with(this, new TwitterCore(authConfig), digitsBuilder.build());
-
         activityMainIntroBinding = DataBindingUtil.setContentView(this, R.layout.activity_main_into);
 
         DigitsAuthButton digitsButton = (DigitsAuthButton) findViewById(R.id.auth_button);
+
         digitsButton.setCallback(new AuthCallback() {
             @Override
             public void success(DigitsSession session, String phoneNumber) {
