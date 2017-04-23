@@ -1,6 +1,4 @@
 apply plugin: 'com.android.application'
-
-
 apply plugin: 'io.fabric'
 
 repositories {
@@ -21,13 +19,26 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
         }
     }
     dataBinding {
         enabled true
     }
+
 }
-def dbflow_version = "4.0.0-beta5"
+
+ext {
+    supportVersion = "25.3.1"
+    daggerVersion = "2.9"
+    okHttpVersion = "3.6.0"
+    retrofitVersion = "2.2.0"
+    calligraphyVerion = "2.2.0"
+    rxJavaVersion = "1.2.7"
+    dbflow_version = "4.0.0-beta7"
+}
+
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -36,20 +47,25 @@ dependencies {
 
 
 
-    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
-    compile "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
-    compile "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
+    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:$dbflow_version"
+    compile "com.github.Raizlabs.DBFlow:dbflow-core:$dbflow_version"
+    compile "com.github.Raizlabs.DBFlow:dbflow:$dbflow_version"
 
 
     compile 'com.github.florent37:materialtextfield:1.0.7'
-    compile 'com.android.support:design:25.3.0'
-    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.heinrichreimersoftware:material-intro:1.6'
     compile 'io.reactivex.rxjava2:rxjava:2.0.6'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'com.facebook.stetho:stetho:1.4.2'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:support-v4:25.3.0'
+    compile 'com.android.support:support-v4:25.3.1'
+
+    //dragger
+    compile "com.google.dagger:dagger:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+
 
     compile 'com.github.sundeepk:compact-calendar-view:2.0.1'
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'

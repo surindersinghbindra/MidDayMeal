@@ -1,9 +1,11 @@
-package com.mdm;
+package com.mdm.view.activities;
 
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
@@ -25,6 +27,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.mdm.AppConstants;
+import com.mdm.R;
+import com.mdm.databinding.ActivityVerticalStepperFormBinding;
+import com.mdm.db.AppDatabase;
+import com.mdm.model.RawData;
 import com.mdm.verticalstepperform.VerticalStepperFormLayout;
 import com.mdm.verticalstepperform.fragments.BackConfirmationFragment;
 import com.mdm.verticalstepperform.interfaces.VerticalStepperForm;
@@ -34,39 +41,35 @@ import com.raizlabs.android.dbflow.structure.database.DatabaseWrapper;
 import com.raizlabs.android.dbflow.structure.database.transaction.ITransaction;
 import com.raizlabs.android.dbflow.structure.database.transaction.Transaction;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class NewEntryFormActivity extends AppCompatActivity implements VerticalStepperForm {
 
     public static final String NEW_ALARM_ADDED = "new_alarm_added";
-
+    public static final String STATE_TITLE = "title";
+    public static final String STATE_DESCRIPTION = "description";
+    public static final String STATE_TIME_HOUR = "time_hour";
+    public static final String STATE_TIME_MINUTES = "time_minutes";
+    public static final String STATE_WEEK_DAYS = "week_days";
+    // private static final int DAY_SELECT_STEP_NUM = 4;
     // Information about the steps/fields of the form
     private static final int STUDENT_STRENGH_STEP_NUM = 0;
     private static final int FUND_RECEIVED_STEP_NUM = 1;
     private static final int WHEATE_RECEIVED_STEP_NUM = 2;
     private static final int RICE_RECEIVED_STEP_NUM = 3;
-   // private static final int DAY_SELECT_STEP_NUM = 4;
-
-
+    private static final int MIN_CHARACTERS_TITLE = 1;
+    private ActivityVerticalStepperFormBinding activityVerticalStepperFormBinding;
     // Title step
     private EditText mStrenghEditText;
-    private static final int MIN_CHARACTERS_TITLE = 1;
-    public static final String STATE_TITLE = "title";
-
     // Description step
     private EditText mFundReceivedEditText;
-    public static final String STATE_DESCRIPTION = "description";
-
     // Time step
     private EditText timeTextView;
     private TimePickerDialog timePicker;
     private Pair<Integer, Integer> time;
-    public static final String STATE_TIME_HOUR = "time_hour";
-    public static final String STATE_TIME_MINUTES = "time_minutes";
-
     // Week days step
     private boolean[] weekDays;
     private LinearLayout daysStepContent;
-    public static final String STATE_WEEK_DAYS = "week_days";
-
     private boolean confirmBack = true;
     private ProgressDialog progressDialog;
     private VerticalStepperFormLayout verticalStepperForm;
@@ -77,13 +80,28 @@ public class NewEntryFormActivity extends AppCompatActivity implements VerticalS
     private int mFundReceived = 0;
     private double mWheateRecieved = 0.0;
     private double mRiceRecieved = 0.0;
+    private int dayCode = 0;
+    private long time1 = 0L;
+    private RawData rawData = new RawData();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vertical_stepper_form);
+        activityVerticalStepperFormBinding = DataBindingUtil.setContentView(NewEntryFormActivity.this, R.layout.activity_vertical_stepper_form);
 
+        if (getIntent() != null) {
+            dayCode = getIntent().getIntExtra(AppConstants.DAY_CODE, 0);
+            time1 = getIntent().getLongExtra(AppConstants.TIME, 0L);
+            rawData.setDayCode(dayCode);
+            rawData.setTime(time1);
+            activityVerticalStepperFormBinding.setRawData(rawData);
+        }
         initializeActivity();
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     private void initializeActivity() {
@@ -163,10 +181,10 @@ public class NewEntryFormActivity extends AppCompatActivity implements VerticalS
                 // In this case, the instruction above is equivalent to:
                 // verticalStepperForm.setActiveStepAsCompleted();
                 break;
-          //  case DAY_SELECT_STEP_NUM:
-                // When this step is open, we check the days to verify that at least one is selected
-          //      checkDays();
-          //      break;
+            //  case DAY_SELECT_STEP_NUM:
+            // When this step is open, we check the days to verify that at least one is selected
+            //      checkDays();
+            //      break;
 
         }
     }
@@ -174,7 +192,7 @@ public class NewEntryFormActivity extends AppCompatActivity implements VerticalS
     @Override
     public void sendData() {
         progressDialog = new ProgressDialog(this);
-        progressDialog.setCancelable(true);
+        progressDialog.setCancelable(false);
         progressDialog.show();
         progressDialog.setMessage(getString(R.string.vertical_form_stepper_form_sending_data_message));
         executeDataSending();
@@ -190,7 +208,7 @@ public class NewEntryFormActivity extends AppCompatActivity implements VerticalS
             @Override
             public void run() {
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(30000);
 
 
                     Intent intent = getIntent();
@@ -218,18 +236,17 @@ public class NewEntryFormActivity extends AppCompatActivity implements VerticalS
             @Override
             public void execute(DatabaseWrapper databaseWrapper) {
                 // do something in BG
-                RawData rawData = new RawData(mStrengh, mFundReceived, mWheateRecieved, mRiceRecieved);
-                rawData.setDayOfMonth(new java.util.Date());
+                rawData.setRecievedBalanceMoney(mFundReceived);
+                rawData.setRecievedBalanceWheat(mWheateRecieved);
+                rawData.setRecievedBalanceRice(mRiceRecieved);
 
-                rawData.setDayCode(2);
-                rawData.setStrength(mStrengh);
-                rawData.getJeera();
-                rawData.getMirch();
                 FlowManager.getModelAdapter(RawData.class).insert(rawData);
             }
         }).success(new Transaction.Success() {
             @Override
             public void onSuccess(Transaction transaction) {
+
+
                 thread.start();
             }
         }).error(new Transaction.Error() {
@@ -258,6 +275,13 @@ public class NewEntryFormActivity extends AppCompatActivity implements VerticalS
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                try {
+                    rawData.setStrength(Long.parseLong(s.toString()));
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                    rawData.setStrength(Long.parseLong("0"));
+                }
+
                 checkTitleStep(s.toString());
             }
 
@@ -501,7 +525,7 @@ public class NewEntryFormActivity extends AppCompatActivity implements VerticalS
     private void activateDay(int index, LinearLayout dayLayout, boolean check) {
         weekDays[index] = true;
 //
-     //   dayLayout.setTag(true);
+        //   dayLayout.setTag(true);
 
         Drawable bg = ContextCompat.getDrawable(getBaseContext(),
                 R.drawable.circle_step_done);
@@ -537,12 +561,12 @@ public class NewEntryFormActivity extends AppCompatActivity implements VerticalS
         boolean thereIsAtLeastOneDaySelected = false;
         for (int i = 0; i < weekDays.length && !thereIsAtLeastOneDaySelected; i++) {
             if (weekDays[i]) {
-           //     verticalStepperForm.setStepAsCompleted(DAY_SELECT_STEP_NUM);
+                //     verticalStepperForm.setStepAsCompleted(DAY_SELECT_STEP_NUM);
                 thereIsAtLeastOneDaySelected = true;
             }
         }
         if (!thereIsAtLeastOneDaySelected) {
-         //   verticalStepperForm.setStepAsUncompleted(DAY_SELECT_STEP_NUM, null);
+            //   verticalStepperForm.setStepAsUncompleted(DAY_SELECT_STEP_NUM, null);
         }
 
         return thereIsAtLeastOneDaySelected;

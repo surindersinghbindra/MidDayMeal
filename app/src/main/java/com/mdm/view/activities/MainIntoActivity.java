@@ -1,11 +1,8 @@
-package com.mdm;
+package com.mdm.view.activities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-
-import android.net.Uri;
-import android.support.design.widget.Snackbar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -17,11 +14,10 @@ import com.digits.sdk.android.Digits;
 import com.digits.sdk.android.DigitsAuthButton;
 import com.digits.sdk.android.DigitsException;
 import com.digits.sdk.android.DigitsSession;
-import com.heinrichreimersoftware.materialintro.app.IntroActivity;
-import com.heinrichreimersoftware.materialintro.app.OnNavigationBlockedListener;
-import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
-import com.heinrichreimersoftware.materialintro.slide.Slide;
+import com.mdm.R;
 import com.mdm.databinding.ActivityMainIntoBinding;
+import com.mdm.db.AppDatabase;
+import com.mdm.model.RawData;
 import com.raizlabs.android.dbflow.config.DatabaseDefinition;
 import com.raizlabs.android.dbflow.config.FlowManager;
 import com.raizlabs.android.dbflow.structure.database.DatabaseWrapper;
@@ -37,12 +33,11 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainIntoActivity extends AppCompatActivity {
 
-    private ActivityMainIntoBinding activityMainIntroBinding;
-
-
     // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
     private static final String TWITTER_KEY = "ENdxMM0DGGrRac3wK9jAbHlI6";
     private static final String TWITTER_SECRET = "WiIYd5SavYixZNEgIgWC967fNmpHMtNRQoW4Q8ClnrDvrB05EP";
+    private ActivityMainIntoBinding activityMainIntroBinding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -51,10 +46,12 @@ public class MainIntoActivity extends AppCompatActivity {
 
         Digits.Builder digitsBuilder = new Digits.Builder().withTheme(R.style.CustomDigitsTheme);
 
+
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
         Fabric.with(this, new TwitterCore(authConfig),  digitsBuilder.build());
 
-      //  Fabric.with(this, new TwitterCore(authConfig), digitsBuilder.build());
+
+        //  Fabric.with(this, new TwitterCore(authConfig), digitsBuilder.build());
 
         activityMainIntroBinding = DataBindingUtil.setContentView(this, R.layout.activity_main_into);
 

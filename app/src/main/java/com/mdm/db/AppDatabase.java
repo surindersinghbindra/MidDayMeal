@@ -1,6 +1,7 @@
-package com.mdm;
+package com.mdm.db;
 
 
+import com.mdm.model.RawData;
 import com.raizlabs.android.dbflow.annotation.Database;
 import com.raizlabs.android.dbflow.annotation.Migration;
 import com.raizlabs.android.dbflow.sql.SQLiteType;
@@ -15,7 +16,7 @@ public class AppDatabase {
 
     public static final String NAME = "AppDatabase"; // we will add the .db extension
 
-    public static final int VERSION = 5;
+    public static final int VERSION = 7;
 
     @Migration(version = 3, priority = 5, database = AppDatabase.class)
     public static class Migration1 extends AlterTableMigration<RawData> {
@@ -58,6 +59,22 @@ public class AppDatabase {
             addColumn(SQLiteType.INTEGER, "day");
             addColumn(SQLiteType.INTEGER, "month");
             addColumn(SQLiteType.INTEGER, "year");
+
+        }
+    }
+
+    @Migration(version = 7, priority = 5, database = AppDatabase.class)
+    public static class Migration5 extends AlterTableMigration<RawData> {
+
+        public Migration5(Class<RawData> table) {
+            super(table);
+        }
+
+        @Override
+        public void onPreMigrate() {
+
+            addColumn(SQLiteType.INTEGER, "time");
+
 
         }
     }

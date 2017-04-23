@@ -3,7 +3,7 @@
     package="com.mdm">
 
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".AppController"
         android:allowBackup="true"
@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SplashActivity"
+            android:name=".view.activities.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,16 +22,15 @@
         </activity>
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="d982a4f1e3f5bf7586e47ab7b9b2a310f412b431"
-            />
+            android:value="d982a4f1e3f5bf7586e47ab7b9b2a310f412b431" />
 
         <activity
-            android:name=".NewAlarmFormActivity"
+            android:name=".view.activities.NewAlarmFormActivity"
             android:label="@string/add_alarm"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".view.activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mdm.MainActivity" />
+                android:value="com.mdm.view.activities.MainActivity" />
 
             <intent-filter>
                 <action android:name=".NewRideActivity" />
@@ -40,12 +39,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".NewEntryFormActivity"
+            android:name=".view.activities.NewEntryFormActivity"
             android:label="@string/add_alarm"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".view.activities.MainActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mdm.MainActivity" />
+                android:value="com.mdm.view.activities.MainActivity" />
 
             <intent-filter>
                 <action android:name=".NewRideActivity" />
@@ -54,11 +54,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainIntoActivity"
-            android:windowSoftInputMode="stateAlwaysHidden">
+            android:name=".view.activities.MainIntoActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
 
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".view.activities.MainActivity"></activity>
     </application>
 
 </manifest>

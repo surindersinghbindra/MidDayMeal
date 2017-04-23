@@ -1,4 +1,4 @@
-package com.mdm;
+package com.mdm.view.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.mdm.AppConstants;
+import com.mdm.R;
+import com.mdm.model.RawData;
+import com.mdm.model.RawData_Table;
+import com.raizlabs.android.dbflow.sql.language.Method;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
+import com.raizlabs.android.dbflow.sql.language.Select;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,8 +41,25 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), NewEntryFormActivity.class);
-                startActivityForResult(intent, NEW_ALARM);
+
+                long count = new Select(Method.count()).from(RawData.class).count();
+// auto-unboxing does not go from Long to int directly, so
+                Integer i = (int) (long) count;
+                RawData rawData = SQLite.select().from(RawData.class).where(RawData_Table.id.is(i - 1)).querySingle();
+
+                Intent intent = new Intent(MainActivity.this, NewEntryFormActivity.class);
+
+                intent.putExtra(AppConstants.TIME, System.currentTimeMillis());
+                Calendar rightNow = Calendar.getInstance();
+
+                intent.putExtra(AppConstants.DAY_CODE, rightNow.get(Calendar.DAY_OF_WEEK) - 1);
+
+                if ((rightNow.get(Calendar.DAY_OF_WEEK) - 1) == 0) {
+                    Snackbar.make(fab, getString(R.string.sunday), Snackbar.LENGTH_LONG).show();
+                } else {
+                    startActivityForResult(intent, NEW_ALARM);
+                }
+
             }
         });
 

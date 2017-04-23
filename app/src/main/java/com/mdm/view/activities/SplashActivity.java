@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.mdm;
+package com.mdm.view.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -33,7 +33,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.heinrichreimersoftware.materialintro.app.IntroActivity;
+import com.mdm.R;
 import com.mdm.databinding.ActivitySplashBinding;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;

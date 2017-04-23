@@ -1,4 +1,4 @@
-package com.mdm;
+package com.mdm.view.activities;
 
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
@@ -23,6 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.mdm.R;
 import com.mdm.verticalstepperform.VerticalStepperFormLayout;
 import com.mdm.verticalstepperform.fragments.BackConfirmationFragment;
 import com.mdm.verticalstepperform.interfaces.VerticalStepperForm;
@@ -30,34 +31,28 @@ import com.mdm.verticalstepperform.interfaces.VerticalStepperForm;
 public class NewAlarmFormActivity extends AppCompatActivity implements VerticalStepperForm {
 
     public static final String NEW_ALARM_ADDED = "new_alarm_added";
-
+    public static final String STATE_TITLE = "title";
+    public static final String STATE_DESCRIPTION = "description";
+    public static final String STATE_TIME_HOUR = "time_hour";
+    public static final String STATE_TIME_MINUTES = "time_minutes";
+    public static final String STATE_WEEK_DAYS = "week_days";
     // Information about the steps/fields of the form
     private static final int TITLE_STEP_NUM = 0;
     private static final int DESCRIPTION_STEP_NUM = 1;
     private static final int TIME_STEP_NUM = 2;
     private static final int DAYS_STEP_NUM = 3;
-
+    private static final int MIN_CHARACTERS_TITLE = 3;
     // Title step
     private EditText titleEditText;
-    private static final int MIN_CHARACTERS_TITLE = 3;
-    public static final String STATE_TITLE = "title";
-
     // Description step
     private EditText descriptionEditText;
-    public static final String STATE_DESCRIPTION = "description";
-
     // Time step
     private TextView timeTextView;
     private TimePickerDialog timePicker;
     private Pair<Integer, Integer> time;
-    public static final String STATE_TIME_HOUR = "time_hour";
-    public static final String STATE_TIME_MINUTES = "time_minutes";
-
     // Week days step
     private boolean[] weekDays;
     private LinearLayout daysStepContent;
-    public static final String STATE_WEEK_DAYS = "week_days";
-
     private boolean confirmBack = true;
     private ProgressDialog progressDialog;
     private VerticalStepperFormLayout verticalStepperForm;

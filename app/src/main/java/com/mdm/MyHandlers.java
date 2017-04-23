@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.mdm.model.RawData;
 import com.raizlabs.android.dbflow.config.FlowManager;
 
 /**
