@@ -5,11 +5,21 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.mdm.R;
 import com.mdm.databinding.ActivityMainIntoBinding;
 import com.mdm.db.AppDatabase;
+import com.mdm.model.NewUser;
 import com.mdm.model.RawData;
 import com.raizlabs.android.dbflow.config.DatabaseDefinition;
 import com.raizlabs.android.dbflow.config.FlowManager;
@@ -18,6 +28,8 @@ import com.raizlabs.android.dbflow.structure.database.transaction.ITransaction;
 import com.raizlabs.android.dbflow.structure.database.transaction.Transaction;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -27,6 +39,7 @@ public class MainIntoActivity extends AppCompatActivity {
     //  private static final String TWITTER_KEY = "ENdxMM0DGGrRac3wK9jAbHlI6";
     //   private static final String TWITTER_SECRET = "WiIYd5SavYixZNEgIgWC967fNmpHMtNRQoW4Q8ClnrDvrB05EP";
     private ActivityMainIntoBinding activityMainIntroBinding;
+    private String TAG = MainIntoActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,12 +73,77 @@ public class MainIntoActivity extends AppCompatActivity {
         });*/
 
 
-
     }
 
 
     public void homeActicty(View view) {
         activityMainIntroBinding.btGetStarted.setEnabled(false);
+        final FirebaseUser userFirebase = FirebaseAuth.getInstance().getCurrentUser();
+
+
+        if (userFirebase != null) {
+            Query query = FirebaseDatabase.getInstance().getReference().child("users").child(userFirebase.getUid());
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+                    Log.d(TAG, String.valueOf(userFirebase.getUid()));
+                    if (dataSnapshot.exists()) {
+                        NewUser user = dataSnapshot.getValue(NewUser.class);
+
+                        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(userFirebase.getUid());
+
+                        Map<String, Object> childUpdates = new HashMap<>();
+                        childUpdates.put("startCashBalance", Integer.parseInt(activityMainIntroBinding.etOpeningBalance.getText().toString()));
+                        childUpdates.put("startWheatBalance", Integer.parseInt(activityMainIntroBinding.etOpeningWheat.getText().toString()));
+                        childUpdates.put("startRiceBalance", Integer.parseInt(activityMainIntroBinding.etOpeningRice.getText().toString()));
+                        mDatabase.updateChildren(childUpdates);
+
+                     /*   if (user.getPhoneNumber() == null || user.getCollegeName() == null) {
+                            startActivity(new Intent(MainIntoActivity.this, MainActivity.class));
+                            finish();
+                        } else {
+                            callMainActivity();
+                        }*/
+
+                        // dataSnapshot is the "issue" node with all children with id 0
+                             /*   for (DataSnapshot issue : dataSnapshot.getChildren()) {
+                                    // do something with the individual "issues"
+                                }*/
+                        callMainActivity();
+                    } else {
+
+                        NewUser newUser = new NewUser(userFirebase.getUid(), userFirebase.getDisplayName(), Integer.parseInt(activityMainIntroBinding.etOpeningBalance.getText().toString()), Integer.parseInt(activityMainIntroBinding.etOpeningWheat.getText().toString()), Integer.parseInt(activityMainIntroBinding.etOpeningRice.getText().toString()));
+
+                        FirebaseDatabase.getInstance().getReference().child("users").child(userFirebase.getUid()).setValue(newUser);
+                            /*    Map<String, Object> childUpdates = new HashMap<>();
+                                childUpdates.put("email", userFirebase.getEmail());
+                                childUpdates.put("name", userFirebase.getDisplayName());
+                                childUpdates.put("id", userFirebase.getUid());
+                                childUpdates.put("image", userFirebase.getPhotoUrl());
+                                mDatabase.updateChildren(childUpdates);*/
+
+                        callMainActivity();
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    databaseError.getDetails();
+                    databaseError.getMessage();
+                    databaseError.toException();
+                }
+            });
+
+
+        }
+
+
+    }
+
+    private void callMainActivity() {
 
         DatabaseDefinition database = FlowManager.getDatabase(AppDatabase.class);
         // run asynchronous transactions easily, with expressive builders
@@ -97,9 +175,9 @@ public class MainIntoActivity extends AppCompatActivity {
                 activityMainIntroBinding.btGetStarted.setEnabled(true);
             }
         }).build().execute();
-
-
+        finish();
     }
+
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));

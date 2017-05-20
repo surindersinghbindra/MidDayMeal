@@ -299,7 +299,7 @@ public class RawData extends BaseObservable {
         } else {
             dallChana = 0.0;
         }
-        return Math.round(dallChana * 100.0) / 100.0;
+        return dallChana;
     }
 
     public void setDallChana(double dallChana) {
@@ -314,7 +314,7 @@ public class RawData extends BaseObservable {
             sabutMungi = 0.0;
         }
 
-        return Math.round(sabutMungi * 100.0) / 100.0;
+        return sabutMungi;
     }
 
     public void setSabutMungi(double sabutMungi) {
@@ -334,7 +334,7 @@ public class RawData extends BaseObservable {
             refinedOil = 0.0;
         }
 
-        return Math.round(refinedOil * 100.0) / 100.0;
+        return refinedOil;
     }
 
     public void setRefinedOil(double refinedOil) {
@@ -344,7 +344,7 @@ public class RawData extends BaseObservable {
     @Bindable({"strength"})
     public double getMirch() {
         mirch = strength * .10;
-        return Math.round(mirch * 100.0) / 100.0;
+        return mirch;
     }
 
     public void setMirch(double mirch) {
@@ -361,7 +361,7 @@ public class RawData extends BaseObservable {
         } else {
             jeera = 0.0;
         }
-        return Math.round(jeera * 100.0) / 100.0;
+        return jeera;
     }
 
     public void setJeera(double jeera) {
@@ -379,7 +379,7 @@ public class RawData extends BaseObservable {
             haldi = 0.0;
         }
 
-        return Math.round(haldi * 100.0) / 100.0;
+        return haldi;
     }
 
     public void setHaldi(double haldi) {
@@ -396,7 +396,7 @@ public class RawData extends BaseObservable {
             garamMasala = 0.0;
         }
 
-        return Math.round(garamMasala * 100.0) / 100.0;
+        return garamMasala;
     }
 
     public void setGaramMasala(double garamMasala) {
@@ -406,7 +406,7 @@ public class RawData extends BaseObservable {
     @Bindable({"strength"})
     public double getNamak() {
         namak = strength * 0.05;
-        return Math.round(namak * 100.0) / 100.0;
+        return namak;
     }
 
     public void setNamak(double namak) {
@@ -420,7 +420,7 @@ public class RawData extends BaseObservable {
         } else {
             khoppa = 0.0;
         }
-        return Math.round(khoppa * 100.0) / 100.0;
+        return khoppa;
     }
 
     public void setKhoppa(double khoppa) {
@@ -435,7 +435,7 @@ public class RawData extends BaseObservable {
         } else {
             dakha = 0.0;
         }
-        return Math.round(dakha * 100.0) / 100.0;
+        return dakha;
     }
 
     public void setDakha(double dakha) {
@@ -451,7 +451,7 @@ public class RawData extends BaseObservable {
         } else {
             kaalCholle = 0.0;
         }
-        return Math.round(kaalCholle * 100.0) / 100.0;
+        return kaalCholle;
     }
 
     public void setKaalCholle(double kaalCholle) {
@@ -466,7 +466,7 @@ public class RawData extends BaseObservable {
         } else {
             bessan = 0.0;
         }
-        return Math.round(bessan * 100.0) / 100.0;
+        return bessan;
     }
 
     public void setBessan(double bessan) {
@@ -480,7 +480,7 @@ public class RawData extends BaseObservable {
         } else {
             dahi = 0.0;
         }
-        return Math.round(dahi * 100.0) / 100.0;
+        return dahi;
     }
 
     public void setDahi(double dahi) {
@@ -494,7 +494,7 @@ public class RawData extends BaseObservable {
         } else {
             khandd = 0.0;
         }
-        return Math.round(khandd * 100.0) / 100.0;
+        return khandd;
 
     }
 
@@ -513,7 +513,7 @@ public class RawData extends BaseObservable {
             pyaaz = 0.0;
         }
 
-        return Math.round(pyaaz * 100.0) / 100.0;
+        return pyaaz;
     }
 
     public void setPyaaz(double pyaaz) {
@@ -539,7 +539,7 @@ public class RawData extends BaseObservable {
             tamattar = 0.0;
         }
 
-        return Math.round(tamattar * 100.0) / 100.0;
+        return tamattar;
     }
 
     public void setTamattar(double tamattar) {
@@ -555,7 +555,7 @@ public class RawData extends BaseObservable {
             sabzi = 0.0;
         }
 
-        return Math.round(sabzi * 100.0) / 100.0;
+        return sabzi;
     }
 
     public void setSabzi(double sabzi) {
@@ -573,7 +573,7 @@ public class RawData extends BaseObservable {
             aloo = 0.0;
         }
 
-        return Math.round(aloo * 100.0) / 100.0;
+        return aloo;
     }
 
     public void setAloo(double aloo) {
@@ -587,7 +587,7 @@ public class RawData extends BaseObservable {
         } else {
             mausamiSabzi = 0.0;
         }
-        return Math.round(mausamiSabzi * 100.0) / 100.0;
+        return mausamiSabzi;
     }
 
     public void setMausamiSabzi(double mausamiSabzi) {
@@ -602,7 +602,7 @@ public class RawData extends BaseObservable {
         } else {
             kanakPissai = 0.0;
         }
-        return Math.round(kanakPissai * 100.0) / 100.0;
+        return kanakPissai;
     }
 
     public void setKanakPissai(double kanakPissai) {
@@ -616,7 +616,7 @@ public class RawData extends BaseObservable {
         } else {
             dudh = 0.0;
         }
-        return Math.round(dudh * 100.0) / 100.0;
+        return dudh;
     }
 
     public void setDudh(double dudh) {
@@ -635,7 +635,7 @@ public class RawData extends BaseObservable {
     @Bindable({"strength"})
     public double getBallan() {
         ballan = 0.80 * strength;
-        return Math.round(ballan * 100.0) / 100.0;
+        return ballan;
     }
 
     public void setBallan(double ballan) {
@@ -644,12 +644,8 @@ public class RawData extends BaseObservable {
 
     @Bindable({"strength"})
     public double getTotal() {
-        return Math.round((getDallChana() + getSabutMungi() + getRefinedOil() + getMirch() + getJeera() + getHaldi() + getGaramMasala() + getNamak() + getKhoppa() + getDakha() + getKaalCholle() + getBessan() + getDahi() + getKhandd() + getPyaaz() + getTamattar() + getSabzi() + getAloo() + getMausamiSabzi() + getKanakPissai() + getDudh() + getBallan()) * 100.0) / 100.0;
+        return ((getDallChana() + getSabutMungi() + getRefinedOil() + getMirch() + getJeera() + getHaldi() + getGaramMasala() + getNamak() + getKhoppa() + getDakha() + getKaalCholle() + getBessan() + getDahi() + getKhandd() + getPyaaz() + getTamattar() + getSabzi() + getAloo() + getMausamiSabzi() + getKanakPissai() + getDudh() + getBallan()));
 
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
     }
 
 

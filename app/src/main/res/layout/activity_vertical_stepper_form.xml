@@ -2,6 +2,10 @@
 
     <data>
 
+        <import
+            alias="StringUtils"
+            type="com.mdm.view.activities.MyStringUtils" />
+
         <variable
             name="rawData"
             type="com.mdm.model.RawData" />
@@ -45,9 +49,10 @@
                         android:textSize="14sp" />
 
                     <TextView
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.jeera)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.jeera)}" />
 
                 </LinearLayout>
 
@@ -65,7 +70,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.aloo)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.aloo)}" />
 
                 </LinearLayout>
 
@@ -83,7 +88,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.khandd)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.khandd)}" />
 
                 </LinearLayout>
 
@@ -102,7 +107,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.mausamiSabzi)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.mausamiSabzi)}" />
 
                 </LinearLayout>
 
@@ -121,7 +126,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.tamattar)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.tamattar)}" />
 
                 </LinearLayout>
 
@@ -138,7 +143,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.bessan)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.bessan)}" />
 
                 </LinearLayout>
 
@@ -155,7 +160,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.dallChana)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.dallChana)}" />
 
                 </LinearLayout>
 
@@ -172,7 +177,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.sabutMungi)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.sabutMungi)}" />
 
                 </LinearLayout>
 
@@ -189,7 +194,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.refinedOil)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.refinedOil)}" />
 
                 </LinearLayout>
 
@@ -206,7 +211,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.mirch)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.mirch)}" />
 
                 </LinearLayout>
 
@@ -223,7 +228,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.haldi)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.haldi)}" />
 
                 </LinearLayout>
 
@@ -240,7 +245,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.garamMasala)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.garamMasala)}" />
 
                 </LinearLayout>
 
@@ -257,7 +262,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.namak)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.namak)}" />
 
                 </LinearLayout>
 
@@ -274,7 +279,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.khoppa)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.khoppa)}" />
 
                 </LinearLayout>
 
@@ -291,7 +296,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.dakha)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.dakha)}" />
 
                 </LinearLayout>
 
@@ -308,7 +313,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.kaalCholle)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.kaalCholle)}" />
 
                 </LinearLayout>
 
@@ -325,7 +330,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.bessan)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.bessan)}" />
 
                 </LinearLayout>
 
@@ -342,7 +347,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.dahi)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.dahi)}" />
 
                 </LinearLayout>
 
@@ -359,7 +364,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.khandd)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.khandd)}" />
 
                 </LinearLayout>
 
@@ -376,7 +381,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.pyaaz)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.pyaaz)}" />
 
                 </LinearLayout>
 
@@ -393,7 +398,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.sabzi)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.sabzi)}" />
 
                 </LinearLayout>
 
@@ -410,7 +415,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.kanakPissai)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.kanakPissai)}" />
 
                 </LinearLayout>
 
@@ -427,7 +432,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.dudh)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.dudh)}" />
 
                 </LinearLayout>
 
@@ -445,7 +450,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.ballan)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.ballan)}" />
 
                 </LinearLayout>
 
@@ -464,7 +469,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(rawData.total)}" />
+                        android:text="@{StringUtils.decinalFormatUptoTwo(rawData.total)}" />
 
                 </LinearLayout>
 

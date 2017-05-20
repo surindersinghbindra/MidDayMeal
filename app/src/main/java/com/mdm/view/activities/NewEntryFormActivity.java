@@ -27,6 +27,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.mdm.AppConstants;
 import com.mdm.R;
 import com.mdm.databinding.ActivityVerticalStepperFormBinding;
@@ -40,6 +43,9 @@ import com.raizlabs.android.dbflow.config.FlowManager;
 import com.raizlabs.android.dbflow.structure.database.DatabaseWrapper;
 import com.raizlabs.android.dbflow.structure.database.transaction.ITransaction;
 import com.raizlabs.android.dbflow.structure.database.transaction.Transaction;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -208,9 +214,7 @@ public class NewEntryFormActivity extends AppCompatActivity implements VerticalS
             @Override
             public void run() {
                 try {
-                    Thread.sleep(30000);
-
-
+                    Thread.sleep(100);
                     Intent intent = getIntent();
                     setResult(RESULT_OK, intent);
                     intent.putExtra(NEW_ALARM_ADDED, true);
@@ -221,6 +225,28 @@ public class NewEntryFormActivity extends AppCompatActivity implements VerticalS
                     intent.putExtra(STATE_WEEK_DAYS, weekDays);
                     // You must set confirmBack to false before calling finish() to avoid the confirmation dialog
                     confirmBack = false;
+
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+                    reference.child("entries").push().setValue(rawData);
+
+                    RawData rawData1 = new RawData();
+                    rawData1.setRecievedBalanceMoney(rawData.getRecievedBalanceMoney());
+                    rawData1.setRecievedBalanceWheat(rawData.getRecievedBalanceWheat());
+                    rawData1.setRecievedBalanceRice(rawData.getRecievedBalanceRice());
+                    rawData1.setRecievedBalanceMoney(rawData.getRecievedBalanceMoney());
+                    DatabaseReference reference2 = reference.child("entry").push();
+                    Map<String, Object> childUpdates1 = new HashMap<>();
+                    childUpdates1.put("lastUpdateOn", System.currentTimeMillis());
+
+
+                    reference2.updateChildren(childUpdates1);
+
+                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    Map<String, Object> childUpdates = new HashMap<>();
+                    childUpdates.put("lastUpdateOn", System.currentTimeMillis());
+                    mDatabase.updateChildren(childUpdates);
+
+
                     finish();
                 } catch (InterruptedException e) {
                     e.printStackTrace();

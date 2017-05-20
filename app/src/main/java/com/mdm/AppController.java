@@ -3,6 +3,8 @@ package com.mdm;
 import android.app.Application;
 
 import com.facebook.stetho.Stetho;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.FirebaseDatabase;
 import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
 
@@ -29,5 +31,9 @@ public class AppController extends Application {
         );
         FlowManager.init(new FlowConfig.Builder(this).build());
         Stetho.initializeWithDefaults(this);
+
+        if (!FirebaseApp.getApps(this).isEmpty()) {
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        }
     }
 }

@@ -3,7 +3,6 @@ package com.mdm.view.activities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,8 +11,15 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mdm.AppConstants;
 import com.mdm.R;
+import com.mdm.model.NewUser;
 import com.mdm.model.RawData;
 import com.mdm.model.RawData_Table;
 import com.raizlabs.android.dbflow.sql.language.Method;
@@ -46,30 +52,62 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                long count = new Select(Method.count()).from(RawData.class).count();
-                // auto-unboxing does not go from Long to int directly, so
-                Integer i = (int) (long) count;
-                RawData rawData = SQLite.select().from(RawData.class).where(RawData_Table.id.is(i - 1)).querySingle();
+
+                final FirebaseUser userFirebase = FirebaseAuth.getInstance().getCurrentUser();
+                if (userFirebase != null) {
+
+                    FirebaseDatabase.getInstance().getReference().child("users").child(userFirebase.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()) {
+                                Intent intent = new Intent(MainActivity.this, NewEntryFormActivity.class);
+                                NewUser user = dataSnapshot.getValue(NewUser.class);
+
+                                if (user.lastUpdateOn == 0L) {
 
 
-                Cursor cursor = SQLite.select(Method.max(RawData_Table.id).as("max")).from(RawData.class)
-                        .query();
-                int max = cursor.getInt(Integer.parseInt("max"));
+                                } else {
+                                    Calendar calendar = Calendar.getInstance();
+                                    calendar.setTimeInMillis(user.lastUpdateOn);
+                                    calendar.add(Calendar.DAY_OF_MONTH, 1);
 
-                cursor.close();
+                                    int mYear = calendar.get(Calendar.YEAR);
+                                    int mMonth = calendar.get(Calendar.MONTH);
+                                    int mDay = calendar.get(Calendar.DAY_OF_MONTH);
 
-                Intent intent = new Intent(MainActivity.this, NewEntryFormActivity.class);
+                                    long count = new Select(Method.count()).from(RawData.class).count();
+                                    // auto-unboxing does not go from Long to int directly, so
+                                    Integer i = (int) (long) count;
+                                    RawData rawData = SQLite.select().from(RawData.class).where(RawData_Table.id.is(i - 1)).querySingle();
 
-                intent.putExtra(AppConstants.TIME, System.currentTimeMillis());
-                Calendar rightNow = Calendar.getInstance();
+                                }
 
-                intent.putExtra(AppConstants.DAY_CODE, rightNow.get(Calendar.DAY_OF_WEEK) - 1);
+                                intent.putExtra(AppConstants.TIME, System.currentTimeMillis());
+                                Calendar rightNow = Calendar.getInstance();
 
-                if ((rightNow.get(Calendar.DAY_OF_WEEK) - 1) == 0) {
-                    Snackbar.make(fab, getString(R.string.sunday), Snackbar.LENGTH_LONG).show();
-                } else {
-                    startActivityForResult(intent, NEW_ALARM);
+                                intent.putExtra(AppConstants.DAY_CODE, rightNow.get(Calendar.DAY_OF_WEEK) - 1);
+
+                                if ((rightNow.get(Calendar.DAY_OF_WEEK) - 1) == 0) {
+                                    Snackbar.make(fab, getString(R.string.sunday), Snackbar.LENGTH_LONG).show();
+                                } else {
+
+                                    startActivityForResult(intent, NEW_ALARM);
+                                }
+
+                            } else {
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
                 }
+
 
             }
         });
