@@ -3,6 +3,7 @@ package com.mdm.view.activities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -46,9 +47,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 long count = new Select(Method.count()).from(RawData.class).count();
-// auto-unboxing does not go from Long to int directly, so
+                // auto-unboxing does not go from Long to int directly, so
                 Integer i = (int) (long) count;
                 RawData rawData = SQLite.select().from(RawData.class).where(RawData_Table.id.is(i - 1)).querySingle();
+
+
+                Cursor cursor = SQLite.select(Method.max(RawData_Table.id).as("max")).from(RawData.class)
+                        .query();
+                int max = cursor.getInt(Integer.parseInt("max"));
+
+                cursor.close();
 
                 Intent intent = new Intent(MainActivity.this, NewEntryFormActivity.class);
 

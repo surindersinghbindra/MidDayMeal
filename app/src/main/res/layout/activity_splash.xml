@@ -12,8 +12,8 @@
         tools:context="com.heinrichreimersoftware.materialintro.demo.SplashActivity">
 
         <ImageView
-            android:layout_width="300dp"
-            android:layout_height="320dp"
+            android:layout_width="180dp"
+            android:layout_height="200dp"
             android:contentDescription="@string/mid_day_meal_punjab"
             android:src="@drawable/mdm_image" />
 
@@ -23,9 +23,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/mi_baseline"
             android:text="@string/mid_day_meal_punjab"
-            android:textSize="20sp"
             android:textColor="?android:textColorPrimaryInverse"
+            android:textSize="20sp"
             tools:ignore="UnusedAttribute" />
+
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="visible"
+            tools:visibility="visible" />
 
     </LinearLayout>
 

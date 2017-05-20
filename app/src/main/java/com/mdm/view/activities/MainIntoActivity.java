@@ -5,15 +5,8 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
-import com.digits.sdk.android.AuthCallback;
-import com.digits.sdk.android.Digits;
-import com.digits.sdk.android.DigitsAuthButton;
-import com.digits.sdk.android.DigitsException;
-import com.digits.sdk.android.DigitsSession;
 import com.mdm.R;
 import com.mdm.databinding.ActivityMainIntoBinding;
 import com.mdm.db.AppDatabase;
@@ -23,19 +16,16 @@ import com.raizlabs.android.dbflow.config.FlowManager;
 import com.raizlabs.android.dbflow.structure.database.DatabaseWrapper;
 import com.raizlabs.android.dbflow.structure.database.transaction.ITransaction;
 import com.raizlabs.android.dbflow.structure.database.transaction.Transaction;
-import com.twitter.sdk.android.core.TwitterAuthConfig;
-import com.twitter.sdk.android.core.TwitterCore;
 
 import java.util.Calendar;
 
-import io.fabric.sdk.android.Fabric;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainIntoActivity extends AppCompatActivity {
 
     // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
-    private static final String TWITTER_KEY = "ENdxMM0DGGrRac3wK9jAbHlI6";
-    private static final String TWITTER_SECRET = "WiIYd5SavYixZNEgIgWC967fNmpHMtNRQoW4Q8ClnrDvrB05EP";
+    //  private static final String TWITTER_KEY = "ENdxMM0DGGrRac3wK9jAbHlI6";
+    //   private static final String TWITTER_SECRET = "WiIYd5SavYixZNEgIgWC967fNmpHMtNRQoW4Q8ClnrDvrB05EP";
     private ActivityMainIntoBinding activityMainIntroBinding;
 
     @Override
@@ -44,18 +34,18 @@ public class MainIntoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-        Digits.Builder digitsBuilder = new Digits.Builder().withTheme(R.style.CustomDigitsTheme);
+     /*   Digits.Builder digitsBuilder = new Digits.Builder().withTheme(R.style.CustomDigitsTheme);
 
 
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
         Fabric.with(this, new TwitterCore(authConfig),  digitsBuilder.build());
-
+*/
 
         activityMainIntroBinding = DataBindingUtil.setContentView(this, R.layout.activity_main_into);
 
-        DigitsAuthButton digitsButton = (DigitsAuthButton) findViewById(R.id.auth_button);
+        // DigitsAuthButton digitsButton = (DigitsAuthButton) findViewById(R.id.auth_button);
 
-        digitsButton.setCallback(new AuthCallback() {
+   /*     digitsButton.setCallback(new AuthCallback() {
             @Override
             public void success(DigitsSession session, String phoneNumber) {
                 // TODO: associate the session userID with your user model
@@ -67,7 +57,7 @@ public class MainIntoActivity extends AppCompatActivity {
             public void failure(DigitsException exception) {
                 Log.d("Digits", "Sign in with Digits failure", exception);
             }
-        });
+        });*/
 
 
 
